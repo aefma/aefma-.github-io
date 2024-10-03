@@ -10,43 +10,119 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f0f8ff;
+            background-color: #f9f9f9;
         }
 
         header {
-            background-color: #ffcc00;
-            color: #333;
+            background: url('https://via.placeholder.com/1920x300/ffcc00/333333?text=BIG+VOICE+BIG+SMILE') no-repeat center center/cover;
+            color: white;
             text-align: center;
-            padding: 20px;
+            padding: 50px 20px;
+            position: relative;
+        }
+
+        .current-time {
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            color: white;
+            font-size: 1.2em;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            border-radius: 5px;
         }
 
         h1 {
             font-size: 2.5em;
+            margin: 0;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a, nav button {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        nav a:hover, nav button:hover {
+            color: #ff6600;
         }
 
         main {
             padding: 20px;
-            display: none; /* Hide main content initially */
+            max-width: 800px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
         section {
-            margin-bottom: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideIn 0.5s forwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         h2 {
             color: #ff6600;
+            margin-top: 0;
         }
 
         footer {
             text-align: center;
-            padding: 10px;
+            padding: 20px;
             background-color: #333;
             color: #fff;
+        }
+
+        .service-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .service-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
         }
 
         form {
             display: flex;
             flex-direction: column;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         label {
@@ -66,59 +142,107 @@
             border: none;
             padding: 10px;
             cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            border-radius: 5px;
         }
 
         button:hover {
             background-color: #ff4500;
+            transform: scale(1.05);
+        }
+
+        .social-share {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .social-share a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #333;
+            font-size: 1.5em;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>BIG VOICE BIG SMILE</h1>
-        <p>~すべての人が笑顔で暮らせる世の中を~</p>
+        <div class="current-time" id="current-time"></div>
+        <h1 id="main-title">BIG VOICE BIG SMILE</h1>
+        <p id="main-tagline">~すべての人が笑顔で暮らせる世の中を~</p>
     </header>
+
+    <nav>
+        <a href="#about">私たちについて</a>
+        <a href="#mission">社訓</a>
+        <a href="#services">サービス</a>
+        <a href="#contact">お問い合わせ</a>
+        <button id="language-toggle">EN</button>
+    </nav>
 
     <main id="main-content">
         <section id="about">
             <h2>私たちについて</h2>
-            <p>2024年は元日に能登半島地震がありました。また2023年のトルコ、シリアで発生した地震、2024年の台湾で発生した地震などにより、多くの人々の笑顔が失われつつあります。私達は自然災害や人災などで笑顔が失われている人々の笑顔という光を灯すことを目的に活動しております。</p>
+            <p id="about-text">2024年は元日に能登半島地震がありました。また2023年のトルコ、シリアで発生した地震、2024年の台湾で発生した地震などにより、多くの人々の笑顔が失われつつあります。私達は自然災害や人災などで笑顔が失われている人々の笑顔という光を灯すことを目的に活動しております。</p>
         </section>
 
         <section id="mission">
             <h2>社訓</h2>
-            <p>せーつティーガード社員は正当に選びぬかれた総会における代表者を通じて行動し、我らと我らの子孫のために諸会社との協和による成果と、全系列会社にわたって自由のもたらす恵沢を確保し、総会の行為によって再び過度な経済競争の惨禍が起こることがないようにすることを決意し、ここに主権が社員に存することを宣言し、この社訓を確定する。</p>
-            <p>我らは、恒久の平和を念願し、企業相互の関係を支配する崇高な理想を深く自覚するのであって、平和を愛する諸会社の公正と信義に信頼して、我らの安定と成長を確保しようと決意した。</p>
-            <p>我らは、成長を続け、専制と隷従、圧迫と偏狭を地上から永久に除去しようと努めている国際企業において、名誉ある地位を占めたいと思う。我らは、全世界の人々が、等しく不平等や欠乏から免れ、平和のうちに生存する権利を有することを確認する。</p>
-            <p>我らは、いづれの会社も、自社のことのみに専念して他社を無視してはならないのであって、会社道徳の法則は、普遍的なものであり、この法則にしたが従うことは、自社の主権を維持し、他社と対等関係に立とうとする各社の責務であると信ずる。</p>
-            <p>せーつティーガード社員は、自社の名誉にかけ、全力をあげてこの崇高な理想と目的を達成することを誓う。</p>
+            <p id="mission-text">せーつティーガード社員は正当に選びぬかれた総会における代表者を通じて行動し、我らと我らの子孫のために諸会社との協和による成果と、全系列会社にわたって自由のもたらす恵沢を確保し、総会の行為によって再び過度な経済競争の惨禍が起こることがないようにすることを決意し、ここに主権が社員に存することを宣言し、この社訓を確定する。そもそも総会は、社員の厳粛な信託によるものであって、その権威は社員に由来し、その権力は社員の代表者がこれを行使し、その福利は社員がこれを享受する。これは人類普遍の原理であり、この社訓は、かかる原理に基づくものである。我らは、これに反する一切の社訓、命令及び強制を排除する。
+せーつティーガード社員は、恒久の平和を念願し、企業相互の関係を支配する崇高な理想を深く自覚するのであって、平和を愛する諸会社の公正と信義に信頼して、我らの安定と成長を確保しようと決意した。我らは、成長を続け、専制と隷従、圧迫と偏狭を地上から永久に除去しようと努めている国際企業において、名誉ある地位を占めたいと思う。我らは、全世界の人々が、等しく不平等や欠乏から免れ、平和のうちに生存する権利を有することを確認する。
+我らは、いづれの会社も、自社のことのみに専念して他社を無視してはならないのであって、会社道徳の法則は、普遍的なものであり、この法則にしたが従うことは、自社の主権を維持し、他社と対等関係に立とうとする各社の責務であると信ずる。
+せーつティーガード社員は、自社の名誉にかけ、全力をあげてこの崇高な理想と目的を達成することを誓う。
+</p>
         </section>
 
         <section id="services">
             <h2>私たちのサービス</h2>
-            <ul>
-                <li>セキュリティ対策</li>
-                <li>リスク管理</li>
-                <li>コンサルティングサービス</li>
-                <li>株を買ってくれた方には商品割引券をプレゼントします</li>
+            <ul class="service-list">
+                <li class="service-item">
+                    <img src="https://via.placeholder.com/40" alt="セキュリティ" class="service-icon">
+                    セキュリティ対策
+                </li>
+                <li class="service-item">
+                    <img src="https://via.placeholder.com/40" alt="リスク管理" class="service-icon">
+                    リスク管理
+                </li>
+                <li class="service-item">
+                    <img src="https://via.placeholder.com/40" alt="コンサルティング" class="service-icon">
+                    コンサルティングサービス
+                </li>
+                <li class="service-item">
+                    <img src="https://via.placeholder.com/40" alt="商品割引" class="service-icon">
+                    商品割引
+                </li>
             </ul>
         </section>
 
         <section id="contact">
             <h2>お問い合わせ</h2>
             <form id="contact-form">
-                <label for="name">名前:</label>
-                <input type="text" id="name" required>
-                
+                <label for="name">お名前:</label>
+                <input type="text" id="name" name="name" required>
                 <label for="email">メールアドレス:</label>
-                <input type="email" id="email" required>
-                
+                <input type="email" id="email" name="email" required>
                 <label for="message">メッセージ:</label>
-                <textarea id="message" required></textarea>
-                
+                <textarea id="message" name="message" rows="5" required></textarea>
                 <button type="submit">送信</button>
             </form>
         </section>
+
+        <div class="social-share">
+            <p>シェアする:</p>
+            <a href="https://twitter.com/share?text=BIG%20VOICE%20BIG%20SMILE" target="_blank">🐦</a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://example.com" target="_blank">📘</a>
+        </div>
     </main>
 
     <footer>
@@ -126,23 +250,40 @@
     </footer>
 
     <script>
-        const password = "a"; // Set your password here
-        const userPassword = prompt("パスワードを入力してください:");
-
-        if (userPassword === password) {
-            document.getElementById("main-content").style.display = "block"; // Show content
-        }else {
-            alert("パスワードが正しくありません。");
-            document.body.innerHTML = "<h1>アクセス拒否</h1>"; // Deny access
+        // 時刻を更新する関数
+        function updateTime() {
+            const now = new Date();
+            const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: 'Asia/Tokyo' };
+            const timeString = now.toLocaleString('ja-JP', options);
+            document.getElementById('current-time').innerText = timeString;
         }
 
-        document.getElementById("contact-form").addEventListener("submit", function(event) {
-            event.preventDefault();
-            alert("メッセージが送信されました！ありがとうございます。");
-            this.reset(); // フォームをリセット
-        });
+        // 言語切替機能
+        document.getElementById('language-toggle').onclick = function() {
+            const isJapanese = document.getElementById('main-title').innerText === 'BIG VOICE BIG SMILE';
+            if (isJapanese) {
+                // 英語に切り替え
+                document.getElementById('main-title').innerText = 'BIG VOICE BIG SMILE';
+                document.getElementById('main-tagline').innerText = '~A world where everyone can live with a smile~';
+                document.getElementById('about-text').innerText = 'In 2024, there was a Noto Peninsula earthquake on New Year\'s Day. Many smiles have been lost due to earthquakes in Turkey, Syria, and Taiwan. We aim to light the smiles of those who have lost their smiles due to natural and human-made disasters.';
+                document.getElementById('mission-text').innerText = 'The employees of Setsu-T Guard act through representatives elected at a general meeting and declare that the sovereignty resides with the employees.';
+                document.getElementById('language-toggle').innerText = 'JP';
+            } else {
+                // 日本語に切り替え
+                document.getElementById('main-title').innerText = 'BIG VOICE BIG SMILE';
+                document.getElementById('main-tagline').innerText = '~すべての人が笑顔で暮らせる世の中を~';
+                document.getElementById('about-text').innerText = '2024年は元日に能登半島地震がありました。また2023年のトルコ、シリアで発生した地震、2024年の台湾で発生した地震などにより、多くの人々の笑顔が失われつつあります。私達は自然災害や人災などで笑顔が失われている人々の笑顔という光を灯すことを目的に活動しております。';
+                document.getElementById('mission-text').innerText = 'せーつティーガード社員は正当に選びぬかれた総会における代表者を通じて行動し、我らと我らの子孫のために諸会社との協和による成果と、全系列会社にわたって自由のもたらす恵沢を確保し、総会の行為によって再び過度な経済競争の惨禍が起こることがないようにすることを決意し、ここに主権が社員に存することを宣言し、この社訓を確定する。';
+                document.getElementById('language-toggle').innerText = 'EN';
+            }
+        };
+
+        // 時刻を初期表示し、1秒ごとに更新
+        updateTime();
+        setInterval(updateTime, 1000);
     </script>
 </body>
 </html>
+
 
 
